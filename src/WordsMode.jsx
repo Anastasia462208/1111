@@ -218,7 +218,7 @@ function WordsMode({ onBackToMenu }) {
                   <span key={index}>
                     {part}
                     {index < currentWord.word.split('_').length - 1 && (
-                      <span className="inline-block text-6xl font-bold text-gray-800 tracking-wider mb-4 font-mono leading-none relative bottom-[-0.2em]">...</span>
+                      <span className="inline-block text-3xl font-bold text-gray-800 font-mono leading-none relative bottom-[-0.1em]">...</span>
                     )}
                   </span>
                 ))}
