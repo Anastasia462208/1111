@@ -5,32 +5,32 @@ import { BookOpen, FileText } from 'lucide-react'
 function Menu({ onSelectMode }) {
   return (
 <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-1 flex items-center justify-center">
-      <div className="max-w-4xl w-full space-y-3">
+      <div className="max-w-4xl w-full space-y-2">
         <div className="text-center space-y-0.5">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent flex items-center justify-center gap-1">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent flex items-center justify-center gap-1">
             📚 Чередующиеся гласные
           </h1>
-          <p className="text-md text-gray-600">Тренажер по русскому языку</p>
+          <p className="text-sm text-gray-600">Тренажер по русскому языку</p>
           <p className="text-xs text-gray-500">Выберите режим тренировки</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-3 mt-4">
+        <div className="grid md:grid-cols-2 gap-2 mt-2">
           <Card 
             className="shadow-xl border-2 border-purple-200 hover:border-purple-400 transition-all cursor-pointer hover:scale-105"
             onClick={() => onSelectMode("words")}
           >
-            <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg py-2">
+            <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg py-1.5">
               <div className="flex items-center gap-1">
-                <BookOpen className="w-5 h-5" />
+                <BookOpen className="w-4 h-4" />
                 <div>
-                  <CardTitle className="text-lg">Отдельные слова</CardTitle>
+                  <CardTitle className="text-base">Отдельные слова</CardTitle>
                   <CardDescription className="text-white/90 text-xs">
                     99 слов с объяснениями
                   </CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-3">
+            <CardContent className="pt-2">
               <ul className="space-y-0.5 text-gray-700 text-xs">
                 <li className="flex items-center gap-1">
                   <span className="text-green-600">✓</span>
@@ -50,7 +50,7 @@ function Menu({ onSelectMode }) {
                 </li>
               </ul>
               <Button 
-                className="w-full mt-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-xs py-1.5"
+                className="w-full mt-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-xs py-1"
                 onClick={() => onSelectMode("words")}
               >
                 Начать тренировку
@@ -62,18 +62,18 @@ function Menu({ onSelectMode }) {
             className="shadow-xl border-2 border-orange-200 hover:border-orange-400 transition-all cursor-pointer hover:scale-105"
             onClick={() => onSelectMode("texts") }
           >
-            <CardHeader className="bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-t-lg py-2">
+            <CardHeader className="bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-t-lg py-1.5">
               <div className="flex items-center gap-1">
-                <FileText className="w-5 h-5" />
+                <FileText className="w-4 h-4" />
                 <div>
-                  <CardTitle className="text-lg">Тексты</CardTitle>
+                  <CardTitle className="text-base">Тексты</CardTitle>
                   <CardDescription className="text-white/90 text-xs">
                     10 текстов с несколькими пропусками
                   </CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-3">
+            <CardContent className="pt-2">
               <ul className="space-y-0.5 text-gray-700 text-xs">
                 <li className="flex items-center gap-1">
                   <span className="text-orange-600">✓</span>
@@ -93,7 +93,7 @@ function Menu({ onSelectMode }) {
                 </li>
               </ul>
               <Button 
-                className="w-full mt-3 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-xs py-1.5"
+                className="w-full mt-2 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-xs py-1"
                 onClick={() => onSelectMode("texts") }
               >
                 Начать тренировку
@@ -102,7 +102,7 @@ function Menu({ onSelectMode }) {
           </Card>
         </div>
 
-        <div className="text-center text-xs text-gray-500 mt-4">
+        <div className="text-center text-xs text-gray-500 mt-2">
           <p>💡 Совет: начните с отдельных слов, а затем переходите к текстам</p>
         </div>
       </div>

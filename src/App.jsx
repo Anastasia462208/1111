@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Menu from './Menu.jsx'
 import WordsMode from './WordsMode.jsx'
 import TextMode from './TextMode.jsx'
-import Header from './Header.jsx'
 import './App.css'
 
 function App() {
@@ -16,16 +15,19 @@ function App() {
     setMode('menu')
   }
 
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">
-        {mode === 'menu' && <Menu onSelectMode={handleSelectMode} />}
-        {mode === 'words' && <WordsMode onBackToMenu={handleBackToMenu} />}
-        {mode === 'texts' && <TextMode onBackToMenu={handleBackToMenu} />}
-      </main>
-    </div>
-  )
+  if (mode === 'menu') {
+    return <Menu onSelectMode={handleSelectMode} />
+  }
+
+  if (mode === 'words') {
+    return <WordsMode onBackToMenu={handleBackToMenu} />
+  }
+
+  if (mode === 'texts') {
+    return <TextMode onBackToMenu={handleBackToMenu} />
+  }
+
+  return null
 }
 
 export default App

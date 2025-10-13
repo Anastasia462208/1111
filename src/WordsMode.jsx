@@ -143,82 +143,82 @@ function WordsMode({ onBackToMenu }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 md:p-8">
-      <div className="max-w-4xl mx-auto space-y-6">
+<div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-1">
+      <div className="max-w-4xl mx-auto space-y-2">
         {/* Заголовок */}
-        <div className="text-center space-y-2 animate-fade-in">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <BookOpen className="w-8 h-8 text-indigo-600" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="text-center space-y-0.5 animate-fade-in">
+          <div className="flex items-center justify-center gap-0.5 mb-0.5">
+            <BookOpen className="w-5 h-5 text-indigo-600" />
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Чередующиеся гласные
             </h1>
           </div>
-          <p className="text-gray-600 text-lg">Тренажер по русскому языку</p>
+          <p className="text-gray-600 text-sm">Тренажер по русскому языку</p>
         </div>
 
         {/* Статистика */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
           <Card className="border-2 border-indigo-100 hover:border-indigo-300 transition-all">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-indigo-600">{completedWords}/{totalWords}</div>
-              <div className="text-sm text-gray-600 mt-1">Прогресс</div>
+            <CardContent className="pt-2 text-center">
+              <div className="text-xl font-bold text-indigo-600">{completedWords}/{totalWords}</div>
+              <div className="text-xs text-gray-600 mt-0.5">Прогресс</div>
             </CardContent>
           </Card>
           <Card className="border-2 border-green-100 hover:border-green-300 transition-all">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-green-600">{score}</div>
-              <div className="text-sm text-gray-600 mt-1">Верно</div>
+            <CardContent className="pt-2 text-center">
+              <div className="text-xl font-bold text-green-600">{score}</div>
+              <div className="text-xs text-gray-600 mt-0.5">Верно</div>
             </CardContent>
           </Card>
           <Card className="border-2 border-blue-100 hover:border-blue-300 transition-all">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-blue-600">{accuracy}%</div>
-              <div className="text-sm text-gray-600 mt-1">Точность</div>
+            <CardContent className="pt-2 text-center">
+              <div className="text-xl font-bold text-blue-600">{accuracy}%</div>
+              <div className="text-xs text-gray-600 mt-0.5">Точность</div>
             </CardContent>
           </Card>
           <Card className="border-2 border-purple-100 hover:border-purple-300 transition-all">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-purple-600 flex items-center justify-center gap-1">
-                {streak > 0 && <Sparkles className="w-6 h-6" />}
+            <CardContent className="pt-2 text-center">
+              <div className="text-xl font-bold text-purple-600 flex items-center justify-center gap-0.5">
+                {streak > 0 && <Sparkles className="w-4 h-4" />}
                 {streak}
               </div>
-              <div className="text-sm text-gray-600 mt-1">Серия</div>
+              <div className="text-xs text-gray-600 mt-0.5">Серия</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Прогресс бар */}
-        <div className="space-y-2">
-          <Progress value={progress} className="h-3" />
-          <div className="text-sm text-gray-600 text-center">
+        <div className="space-y-0.5">
+          <Progress value={progress} className="h-1.5" />
+          <div className="text-xs text-gray-600 text-center">
             Вопрос {currentWordIndex + 1} из {totalWords}
           </div>
         </div>
 
         {/* Основная карточка */}
         <Card className="shadow-2xl border-2 border-indigo-200 animate-slide-up">
-          <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg">
+          <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg p-2">
             <div className="flex items-center justify-between">
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-xs py-0.5 px-1">
                 {currentWord.rule}
               </Badge>
               {streak >= 3 && (
-                <Badge className="bg-yellow-400 text-yellow-900 border-yellow-500 animate-pulse">
+                <Badge className="bg-yellow-400 text-yellow-900 border-yellow-500 animate-pulse text-xs py-0.5 px-1">
                   🔥 Серия {streak}!
                 </Badge>
               )}
             </div>
-            <CardTitle className="text-3xl mt-4">Вставьте пропущенную букву</CardTitle>
+            <CardTitle className="text-xl mt-1">Вставьте пропущенную букву</CardTitle>
           </CardHeader>
-          <CardContent className="pt-8 space-y-6">
+          <CardContent className="pt-3 space-y-3">
             {/* Слово с пропуском */}
             <div className="text-center">
-              <div className="text-6xl font-bold text-gray-800 tracking-wider mb-4 font-mono">
-                {currentWord.word.split('_').map((part, index) => (
+              <div className="text-4xl font-bold text-gray-800 tracking-wider mb-1 font-mono">
+                {currentWord.word.split("_").map((part, index) => (
                   <span key={index}>
                     {part}
-                    {index < currentWord.word.split('_').length - 1 && (
-                      <span className="inline-block text-xl font-bold text-gray-800 font-mono leading-none relative bottom-[-0.05em]">...</span>
+                    {index < currentWord.word.split("_").length - 1 && (
+                      <span className="inline-block text-base font-bold text-gray-800 font-mono leading-none relative bottom-[-0.05em]">...</span>
                     )}
                   </span>
                 ))}
@@ -226,27 +226,27 @@ function WordsMode({ onBackToMenu }) {
             </div>
 
             {/* Варианты ответов */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {['а', 'о', 'е', 'и'].map((letter) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
+              {["а", "о", "е", "и"].map((letter) => (
                 <Button
                   key={letter}
                   onClick={() => handleAnswer(letter)}
                   disabled={answered}
                   variant={getButtonVariant(letter)}
-                  size="lg"
-                  className={`text-3xl h-20 font-bold transition-all transform hover:scale-105 ${
-                    !answered ? 'hover:shadow-lg' : ''
+                  size="sm"
+                  className={`text-xl h-14 font-bold transition-all transform hover:scale-105 ${
+                    !answered ? "hover:shadow-lg" : ""
                   } ${
                     answered && letter === currentWord.correct 
-                      ? 'bg-green-500 hover:bg-green-600 text-white border-green-600' 
-                      : ''
+                      ? "bg-green-500 hover:bg-green-600 text-white border-green-600" 
+                      : ""
                   } ${
                     answered && letter === selectedAnswer && letter !== currentWord.correct
-                      ? 'bg-red-500 hover:bg-red-600 text-white border-red-600'
-                      : ''
+                      ? "bg-red-500 hover:bg-red-600 text-white border-red-600"
+                      : ""
                   }`}
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-0.5">
                     {letter.toUpperCase()}
                     {getButtonIcon(letter)}
                   </span>
@@ -256,29 +256,29 @@ function WordsMode({ onBackToMenu }) {
 
             {/* Объяснение */}
             {showExplanation && (
-              <div className={`p-6 rounded-lg border-2 animate-fade-in ${
+              <div className={`p-3 rounded-lg border-2 animate-fade-in ${
                 selectedAnswer === currentWord.correct 
-                  ? 'bg-green-50 border-green-300' 
-                  : 'bg-red-50 border-red-300'
+                  ? "bg-green-50 border-green-300" 
+                  : "bg-red-50 border-red-300"
               }`}>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-1">
                   {selectedAnswer === currentWord.correct ? (
-                    <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   ) : (
-                    <XCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
+                    <XCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
                   )}
-                  <div className="space-y-2">
-                    <div className="font-bold text-lg">
-                      {selectedAnswer === currentWord.correct ? 'Правильно!' : 'Неправильно!'}
+                  <div className="space-y-0.5">
+                    <div className="font-bold text-sm">
+                      {selectedAnswer === currentWord.correct ? "Правильно!" : "Неправильно!"}
                     </div>
-                    <div className="text-gray-700">
-                      Правильный ответ: <span className="font-bold text-xl">{currentWord.fullWord}</span>
+                    <div className="text-gray-700 text-xs">
+                      Правильный ответ: <span className="font-bold text-base">{currentWord.fullWord}</span>
                     </div>
-                    <div className="text-gray-600 mt-2">
+                    <div className="text-gray-600 text-xs mt-0.5">
                       <span className="font-semibold">Правило:</span> {currentWord.explanation}
                     </div>
                     {currentWord.sentence && (
-                      <div className="text-gray-700 mt-3 p-3 bg-white/50 rounded border border-gray-200">
+                      <div className="text-gray-700 text-xs mt-1 p-1.5 bg-white/50 rounded border border-gray-200">
                         <span className="font-semibold">Пример:</span> {currentWord.sentence}
                       </div>
                     )}
@@ -287,20 +287,20 @@ function WordsMode({ onBackToMenu }) {
               </div>
             )}
           </CardContent>
-          <CardFooter className="flex justify-between pb-6">
+          <CardFooter className="flex justify-between pb-3 pt-1">
             <Button 
               onClick={onBackToMenu} 
               variant="outline"
-              className="border-2 hover:bg-gray-100"
+              className="border-2 hover:bg-gray-100 text-xs px-3 py-1.5"
             >
-              ← Вернуться в меню
+              ← В меню
             </Button>
             {answered && currentWordIndex < totalWords - 1 && (
               <Button 
                 onClick={handleNext}
-                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-6"
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-4 py-1.5"
               >
-                Следующее слово →
+                Следующее →
               </Button>
             )}
           </CardFooter>

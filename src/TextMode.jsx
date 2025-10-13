@@ -159,90 +159,90 @@ function TextMode({ onBackToMenu }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-2">
-      <div className="max-w-4xl mx-auto space-y-3 py-4">
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent flex items-center justify-center gap-3">
+<div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-1">
+      <div className="max-w-4xl mx-auto space-y-2 py-2">
+        <div className="text-center space-y-1">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent flex items-center justify-center gap-2">
             📝 Текстовые упражнения
           </h1>
-          <p className="text-gray-600">Заполните все пропуски правильно</p>
+          <p className="text-gray-600 text-sm">Заполните все пропуски правильно</p>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-2">
           <Card className="bg-white/80 backdrop-blur">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-indigo-600">{completedExercises}/{totalExercises}</div>
-              <div className="text-sm text-gray-600 mt-1">Прогресс</div>
+            <CardContent className="pt-4 text-center">
+              <div className="text-2xl font-bold text-indigo-600">{completedExercises}/{totalExercises}</div>
+              <div className="text-xs text-gray-600 mt-0.5">Прогресс</div>
             </CardContent>
           </Card>
           <Card className="bg-white/80 backdrop-blur">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-green-600">{score}</div>
-              <div className="text-sm text-gray-600 mt-1">Верно</div>
+            <CardContent className="pt-4 text-center">
+              <div className="text-2xl font-bold text-green-600">{score}</div>
+              <div className="text-xs text-gray-600 mt-0.5">Верно</div>
             </CardContent>
           </Card>
           <Card className="bg-white/80 backdrop-blur">
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-purple-600">{accuracy}%</div>
-              <div className="text-sm text-gray-600 mt-1">Точность</div>
+            <CardContent className="pt-4 text-center">
+              <div className="text-2xl font-bold text-purple-600">{accuracy}%</div>
+              <div className="text-xs text-gray-600 mt-0.5">Точность</div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm text-gray-600">
+        <div className="space-y-1">
+          <div className="flex justify-between text-xs text-gray-600">
             <span>Упражнение {currentExerciseIndex + 1} из {totalExercises}</span>
           </div>
-          <Progress value={progress} className="h-3" />
+          <Progress value={progress} className="h-2" />
         </div>
 
         <Card className="shadow-xl border-2 border-purple-200">
-          <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-            <Badge className="w-fit bg-white/20 text-white border-white/30 mb-2">
+          <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg p-2">
+            <Badge className="w-fit bg-white/20 text-white border-white/30 text-xs py-0.5 px-1 mb-1">
               Текст #{currentExercise.id}
             </Badge>
-            <CardTitle className="text-2xl">Вставьте пропущенные буквы</CardTitle>
-            <CardDescription className="text-white/90">
+            <CardTitle className="text-xl">Вставьте пропущенные буквы</CardTitle>
+            <CardDescription className="text-white/90 text-sm">
               Все пропуски должны быть заполнены правильно
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-6 space-y-6">
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-lg border-2 border-purple-200">
-              <div className="text-lg leading-relaxed">
+          <CardContent className="pt-3 space-y-3">
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-3 rounded-lg border-2 border-purple-200">
+              <div className="text-sm leading-relaxed">
                 {renderTextWithBlanks()}
               </div>
             </div>
 
             {!submitted && (
-              <div className="flex items-center gap-2 text-sm text-gray-600 bg-blue-50 p-3 rounded border border-blue-200">
-                <AlertCircle className="w-4 h-4 text-blue-600" />
+              <div className="flex items-center gap-1 text-xs text-gray-600 bg-blue-50 p-2 rounded border border-blue-200">
+                <AlertCircle className="w-3 h-3 text-blue-600" />
                 <span>Выберите букву для каждого пропуска, затем нажмите "Проверить"</span>
               </div>
             )}
 
             {submitted && (
-              <div className={`p-6 rounded-lg border-2 animate-fade-in ${
+              <div className={`p-3 rounded-lg border-2 animate-fade-in ${
                 isCorrect 
                   ? 'bg-green-50 border-green-300' 
                   : 'bg-red-50 border-red-300'
               }`}>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2">
                   {isCorrect ? (
-                    <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   ) : (
-                    <XCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
+                    <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                   )}
-                  <div className="space-y-3">
-                    <div className="font-bold text-lg">
+                  <div className="space-y-2">
+                    <div className="font-bold text-md">
                       {isCorrect ? 'Отлично! Все правильно!' : 'Есть ошибки!'}
                     </div>
                     {!isCorrect && (
-                      <div className="space-y-2">
-                        <div className="font-semibold">Правильные ответы:</div>
+                      <div className="space-y-1">
+                        <div className="font-bold text-sm">Правильные ответы:</div>
                         {currentExercise.blanks.map((blank, index) => (
-                          <div key={index} className="text-sm">
+                          <div key={index} className="text-xs">
                             <span className="font-bold">{blank.word}</span> — {blank.correct} 
-                            <span className="text-gray-600 ml-2">({blank.rule})</span>
+                            <span className="text-gray-600 ml-1">({blank.rule})</span>
                           </div>
                         ))}
                       </div>
@@ -252,33 +252,33 @@ function TextMode({ onBackToMenu }) {
               </div>
             )}
           </CardContent>
-          <CardFooter className="flex justify-between pb-6">
+          <CardFooter className="flex justify-between pb-2 pt-1">
             <Button 
               onClick={onBackToMenu} 
               variant="outline"
-              className="border-2 hover:bg-gray-100"
+              className="border-2 hover:bg-gray-100 text-xs px-3 py-1.5"
             >
-              ← Вернуться в меню
+              ← В меню
             </Button>
             {!submitted ? (
               <Button 
                 onClick={handleSubmit}
                 disabled={!allAnswered}
-                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-6"
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-4 py-1.5"
               >
                 Проверить
               </Button>
             ) : currentExerciseIndex < totalExercises - 1 ? (
               <Button 
                 onClick={handleNext}
-                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-6"
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-4 py-1.5"
               >
                 Следующий текст →
               </Button>
             ) : (
               <Button 
                 onClick={() => setCurrentExerciseIndex(totalExercises)}
-                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6"
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-1.5"
               >
                 Завершить
               </Button>
