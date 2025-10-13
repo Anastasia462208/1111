@@ -274,9 +274,16 @@ function WordsMode({ onBackToMenu }) {
                     <div className="text-gray-700 text-xs">
                       Правильный ответ: <span className="font-bold text-base">{currentWord.fullWord}</span>
                     </div>
-                    <div className="text-gray-600 text-xs mt-0.5">
-                      <span className="font-semibold">Правило:</span> {currentWord.explanation}
-                    </div>
+                    {currentWord.explanation && !currentWord.explanation.startsWith('ИСКЛЮЧЕНИЕ!') && (
+                      <div className="text-gray-600 text-xs mt-0.5">
+                        <span className="font-semibold">Правило:</span> {currentWord.explanation}
+                      </div>
+                    )}
+                    {currentWord.explanation && currentWord.explanation.startsWith('ИСКЛЮЧЕНИЕ!') && (
+                      <div className="text-gray-600 text-xs mt-0.5">
+                        <span className="font-semibold">Примечание:</span> {currentWord.explanation}
+                      </div>
+                    )}
                     {currentWord.sentence && (
                       <div className="text-gray-700 text-xs mt-1 p-1.5 bg-white/50 rounded border border-gray-200">
                         <span className="font-semibold">Пример:</span> {currentWord.sentence}
