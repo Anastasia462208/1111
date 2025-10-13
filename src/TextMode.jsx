@@ -100,7 +100,7 @@ function TextMode({ onBackToMenu }) {
                 : 'border-purple-400 bg-white hover:border-purple-600'
             }`}
           >
-            <option value="">?</option>
+            <option value="">...</option>
             {blank.options.map((option) => (
               <option key={option} value={option}>
                 {option}
