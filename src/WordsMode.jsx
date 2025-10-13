@@ -188,11 +188,15 @@ function WordsMode({ onBackToMenu }) {
         </div>
 
         {/* Прогресс бар */}
-        <div className="space-y-0.5">
-          <Progress value={progress} className="h-1.5" />
-          <div className="text-xs text-gray-600 text-center">
-            Вопрос {currentWordIndex + 1} из {totalWords}
+        <div className="relative flex items-center w-full space-x-2">
+          <img src="/src/assets/i/running_boy.jpg" alt="Бегущий мальчик" className="w-6 h-6" />
+          <div className="flex-1 space-y-0.5">
+            <Progress value={progress} className="h-1.5" />
+            <div className="text-xs text-gray-600 text-center">
+              Вопрос {currentWordIndex + 1} из {totalWords}
+            </div>
           </div>
+          <img src="/src/assets/i/finish_flag.png" alt="Флаг финиша" className="w-6 h-6" />
         </div>
 
         {/* Основная карточка */}

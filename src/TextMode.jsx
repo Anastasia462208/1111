@@ -189,11 +189,15 @@ function TextMode({ onBackToMenu }) {
           </Card>
         </div>
 
-        <div className="space-y-1">
-          <div className="flex justify-between text-xs text-gray-600">
-            <span>Упражнение {currentExerciseIndex + 1} из {totalExercises}</span>
+        <div className="relative flex items-center w-full space-x-2">
+          <img src="/src/assets/i/running_boy.jpg" alt="Бегущий мальчик" className="w-6 h-6" />
+          <div className="flex-1 space-y-1">
+            <div className="flex justify-between text-xs text-gray-600">
+              <span>Упражнение {currentExerciseIndex + 1} из {totalExercises}</span>
+            </div>
+            <Progress value={progress} className="h-2" />
           </div>
-          <Progress value={progress} className="h-2" />
+          <img src="/src/assets/i/finish_flag.png" alt="Флаг финиша" className="w-6 h-6" />
         </div>
 
         <Card className="shadow-xl border-2 border-purple-200">
