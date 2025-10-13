@@ -159,8 +159,8 @@ function TextMode({ onBackToMenu }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-4">
-      <div className="max-w-4xl mx-auto space-y-6 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-2">
+      <div className="max-w-4xl mx-auto space-y-3 py-4">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent flex items-center justify-center gap-3">
             📝 Текстовые упражнения
