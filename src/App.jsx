@@ -15,19 +15,18 @@ function App() {
     setMode('menu')
   }
 
-  if (mode === 'menu') {
-    return <Menu onSelectMode={handleSelectMode} />
-  }
-
-  if (mode === 'words') {
-    return <WordsMode onBackToMenu={handleBackToMenu} />
-  }
-
-  if (mode === 'texts') {
-    return <TextMode onBackToMenu={handleBackToMenu} />
-  }
-
-  return null
+  return (
+    <div className="flex flex-col min-h-screen">
+      <header className="bg-blue-800 text-white p-2 text-center text-sm font-semibold">
+        Многопрофильная гимназия Сириус
+      </header>
+      <main className="flex-grow">
+        {mode === 'menu' && <Menu onSelectMode={handleSelectMode} />}
+        {mode === 'words' && <WordsMode onBackToMenu={handleBackToMenu} />}
+        {mode === 'texts' && <TextMode onBackToMenu={handleBackToMenu} />}
+      </main>
+    </div>
+  )
 }
 
 export default App
