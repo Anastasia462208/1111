@@ -5,6 +5,8 @@ import { Progress } from '@/components/ui/progress.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { CheckCircle2, XCircle, RotateCcw, AlertCircle } from 'lucide-react'
 import textExercises from './assets/text_exercises.json'
+import runningBoyGif from './assets/i/running_boy_new.gif'
+import finishFlagImg from './assets/i/finish_flag_new.png'
 
 function TextMode({ onBackToMenu }) {
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0)
@@ -190,14 +192,14 @@ function TextMode({ onBackToMenu }) {
         </div>
 
         <div className="relative flex items-center w-full space-x-2">
-          <img src="/src/assets/i/running_boy.jpg" alt="Бегущий мальчик" className="w-6 h-6" />
+          <img src={runningBoyGif} alt="Бегущий мальчик" className="w-6 h-6" />
           <div className="flex-1 space-y-1">
             <div className="flex justify-between text-xs text-gray-600">
               <span>Упражнение {currentExerciseIndex + 1} из {totalExercises}</span>
             </div>
             <Progress value={progress} className="h-2" />
           </div>
-          <img src="/src/assets/i/finish_flag.png" alt="Флаг финиша" className="w-6 h-6" />
+          <img src={finishFlagImg} alt="Флаг финиша" className="w-6 h-6" />
         </div>
 
         <Card className="shadow-xl border-2 border-purple-200">
