@@ -199,9 +199,7 @@ function WordsMode({ onBackToMenu }) {
         <Card className="shadow-2xl border-2 border-indigo-200 animate-slide-up">
           <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-t-lg p-2">
             <div className="flex items-center justify-between">
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-xs py-0.5 px-1">
-                {currentWord.rule}
-              </Badge>
+
               {streak >= 3 && (
                 <Badge className="bg-yellow-400 text-yellow-900 border-yellow-500 animate-pulse text-xs py-0.5 px-1">
                   🔥 Серия {streak}!
