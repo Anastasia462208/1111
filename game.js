@@ -106,27 +106,27 @@ const TASKS = [
     }
 ];
 
-// NPC персонажи с заданиями
+// NPC персонажи с заданиями (позиции в процентах от размера экрана)
 const NPCS = [
-    { id: 1, emoji: "👨‍🏫", name: "Учитель Орфографий", x: 150, y: 100, taskId: 1 },
-    { id: 2, emoji: "👩‍🎓", name: "Студентка Пунктуация", x: 500, y: 150, taskId: 2 },
-    { id: 3, emoji: "🧙‍♂️", name: "Мудрец Грамматиус", x: 300, y: 350, taskId: 3 },
-    { id: 4, emoji: "👨‍💼", name: "Профессор Синтаксис", x: 700, y: 250, taskId: 4 },
-    { id: 5, emoji: "👩‍🔬", name: "Доктор Морфология", x: 600, y: 400, taskId: 5 },
-    { id: 6, emoji: "🧑‍🎨", name: "Художник Слов", x: 200, y: 300, taskId: 6 },
-    { id: 7, emoji: "👨‍⚖️", name: "Судья Правописание", x: 450, y: 80, taskId: 7 },
-    { id: 8, emoji: "👩‍💻", name: "Программистка Лексика", x: 100, y: 400, taskId: 8 },
-    { id: 9, emoji: "🧑‍🍳", name: "Повар Фразеология", x: 750, y: 100, taskId: 9 },
-    { id: 10, emoji: "👨‍🚀", name: "Космонавт Стилистика", x: 400, y: 200, taskId: 10 }
+    { id: 1, emoji: "👨‍🏫", name: "Учитель Орфографий", xPercent: 15, yPercent: 20, taskId: 1 },
+    { id: 2, emoji: "👩‍🎓", name: "Студентка Пунктуация", xPercent: 60, yPercent: 30, taskId: 2 },
+    { id: 3, emoji: "🧙‍♂️", name: "Мудрец Грамматиус", xPercent: 35, yPercent: 70, taskId: 3 },
+    { id: 4, emoji: "👨‍💼", name: "Профессор Синтаксис", xPercent: 80, yPercent: 50, taskId: 4 },
+    { id: 5, emoji: "👩‍🔬", name: "Доктор Морфология", xPercent: 70, yPercent: 80, taskId: 5 },
+    { id: 6, emoji: "🧑‍🎨", name: "Художник Слов", xPercent: 20, yPercent: 60, taskId: 6 },
+    { id: 7, emoji: "👨‍⚖️", name: "Судья Правописание", xPercent: 50, yPercent: 15, taskId: 7 },
+    { id: 8, emoji: "👩‍💻", name: "Программистка Лексика", xPercent: 10, yPercent: 80, taskId: 8 },
+    { id: 9, emoji: "🧑‍🍳", name: "Повар Фразеология", xPercent: 85, yPercent: 20, taskId: 9 },
+    { id: 10, emoji: "👨‍🚀", name: "Космонавт Стилистика", xPercent: 45, yPercent: 40, taskId: 10 }
 ];
 
 // ===== ИГРОВОЕ СОСТОЯНИЕ =====
 
 const gameState = {
     player: {
-        x: 400,
-        y: 250,
-        speed: 5
+        x: 0,
+        y: 0,
+        speed: 8
     },
     score: 0,
     level: 1,
@@ -134,8 +134,8 @@ const gameState = {
     currentNPC: null,
     keys: {},
     gameMap: {
-        width: 850,
-        height: 500
+        width: 0,
+        height: 0
     }
 };
 
@@ -154,7 +154,14 @@ const totalTasksElement = document.getElementById('total-tasks');
 // ===== ИНИЦИАЛИЗАЦИЯ ИГРЫ =====
 
 function initGame() {
-    // Установка начальной позиции игрока
+    // Получение размеров игрового поля
+    const gameWorld = document.querySelector('.game-world');
+    gameState.gameMap.width = gameWorld.clientWidth;
+    gameState.gameMap.height = gameWorld.clientHeight;
+
+    // Установка начальной позиции игрока (в центре)
+    gameState.player.x = gameState.gameMap.width / 2;
+    gameState.player.y = gameState.gameMap.height / 2;
     updatePlayerPosition();
 
     // Создание NPC
@@ -167,8 +174,31 @@ function initGame() {
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
 
+    // Обработка изменения размера окна
+    window.addEventListener('resize', handleResize);
+
     // Игровой цикл
     gameLoop();
+}
+
+// Обработка изменения размера окна
+function handleResize() {
+    const gameWorld = document.querySelector('.game-world');
+    const oldWidth = gameState.gameMap.width;
+    const oldHeight = gameState.gameMap.height;
+
+    gameState.gameMap.width = gameWorld.clientWidth;
+    gameState.gameMap.height = gameWorld.clientHeight;
+
+    // Масштабирование позиции игрока
+    if (oldWidth > 0 && oldHeight > 0) {
+        gameState.player.x = (gameState.player.x / oldWidth) * gameState.gameMap.width;
+        gameState.player.y = (gameState.player.y / oldHeight) * gameState.gameMap.height;
+        updatePlayerPosition();
+    }
+
+    // Пересоздание NPC с новыми позициями
+    createNPCs();
 }
 
 // ===== СОЗДАНИЕ NPC =====
@@ -181,8 +211,17 @@ function createNPCs() {
         npcElement.className = 'npc';
         npcElement.id = `npc-${npc.id}`;
         npcElement.textContent = npc.emoji;
-        npcElement.style.left = `${npc.x}px`;
-        npcElement.style.top = `${npc.y}px`;
+
+        // Вычисление позиции в пикселях из процентов
+        const x = (npc.xPercent / 100) * gameState.gameMap.width;
+        const y = (npc.yPercent / 100) * gameState.gameMap.height;
+
+        npcElement.style.left = `${x}px`;
+        npcElement.style.top = `${y}px`;
+
+        // Сохранение позиции для проверки взаимодействия
+        npcElement.dataset.x = x;
+        npcElement.dataset.y = y;
 
         if (!gameState.completedTasks.has(npc.taskId)) {
             npcElement.classList.add('has-task');
@@ -258,13 +297,18 @@ function updatePlayerPosition() {
 function checkNPCInteraction() {
     // Проверяем расстояние до каждого NPC
     for (const npc of NPCS) {
+        // Вычисление позиции NPC из процентов
+        const npcX = (npc.xPercent / 100) * gameState.gameMap.width;
+        const npcY = (npc.yPercent / 100) * gameState.gameMap.height;
+
         const distance = Math.sqrt(
-            Math.pow(gameState.player.x - npc.x, 2) +
-            Math.pow(gameState.player.y - npc.y, 2)
+            Math.pow(gameState.player.x - npcX, 2) +
+            Math.pow(gameState.player.y - npcY, 2)
         );
 
-        // Если игрок близко к NPC (менее 60 пикселей)
-        if (distance < 60) {
+        // Если игрок близко к NPC (менее 100 пикселей для больших экранов)
+        const interactionDistance = Math.max(100, gameState.gameMap.width * 0.08);
+        if (distance < interactionDistance) {
             startNPCDialog(npc);
             return;
         }
@@ -473,9 +517,9 @@ function restartGame() {
     gameState.score = 0;
     gameState.level = 1;
     gameState.completedTasks.clear();
-    gameState.player.x = 400;
-    gameState.player.y = 250;
-    gameState.player.speed = 5;
+    gameState.player.x = gameState.gameMap.width / 2;
+    gameState.player.y = gameState.gameMap.height / 2;
+    gameState.player.speed = 8;
     selectedOptionIndex = null;
 
     // Обновление UI

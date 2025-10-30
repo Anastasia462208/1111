@@ -7,20 +7,24 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 .game-container {
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-width: 900px;
-    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Заголовок */
@@ -63,7 +67,7 @@ body {
 .game-world {
     position: relative;
     width: 100%;
-    height: 500px;
+    flex: 1;
     background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 100%);
     overflow: hidden;
 }
@@ -81,29 +85,29 @@ body {
 /* Игрок */
 .player {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    font-size: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     z-index: 10;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.4));
 }
 
 /* NPC */
 .npc {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    font-size: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform 0.3s ease;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.4));
 }
 
 .npc:hover {
