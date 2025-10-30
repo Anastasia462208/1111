@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приключения Грамотея - Обучающая игра по русскому языку</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Заголовок и статистика -->
+        <header class="game-header">
+            <h1>Приключения Грамотея</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Очки:</span>
+                    <span id="score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Уровень:</span>
+                    <span id="level" class="stat-value">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Задания:</span>
+                    <span id="completed-tasks" class="stat-value">0</span>/<span id="total-tasks" class="stat-value">10</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Игровое поле -->
+        <div class="game-world">
+            <div id="game-map" class="game-map">
+                <!-- Сюда будет добавлена карта -->
+            </div>
+            <div id="player" class="player">🧑</div>
+            <div class="npcs" id="npcs-container">
+                <!-- Сюда будут добавлены NPC -->
+            </div>
+        </div>
+
+        <!-- Панель управления -->
+        <div class="controls">
+            <div class="control-info">
+                <p>Управление: стрелки ← ↑ → ↓ или WASD</p>
+                <p>Подойдите к персонажу и нажмите SPACE для диалога</p>
+            </div>
+        </div>
+
+        <!-- Диалоговое окно -->
+        <div id="dialog-box" class="dialog-box hidden">
+            <div class="dialog-content">
+                <div class="dialog-speaker" id="dialog-speaker">NPC</div>
+                <div class="dialog-text" id="dialog-text"></div>
+                <div class="dialog-buttons" id="dialog-buttons"></div>
+            </div>
+        </div>
+
+        <!-- Окно с заданием -->
+        <div id="task-box" class="task-box hidden">
+            <div class="task-content">
+                <div class="task-header">
+                    <h3>Задание по русскому языку</h3>
+                    <button class="close-button" onclick="closeTask()">✕</button>
+                </div>
+                <div class="task-question" id="task-question"></div>
+                <div class="task-options" id="task-options"></div>
+                <div class="task-feedback" id="task-feedback"></div>
+                <button id="task-submit" class="task-submit-btn">Ответить</button>
+            </div>
+        </div>
+
+        <!-- Окно победы -->
+        <div id="victory-box" class="victory-box hidden">
+            <div class="victory-content">
+                <h2>Поздравляем!</h2>
+                <p>Вы успешно завершили все задания!</p>
+                <div class="final-stats">
+                    <p>Итоговые очки: <span id="final-score"></span></p>
+                    <p>Достигнутый уровень: <span id="final-level"></span></p>
+                </div>
+                <button onclick="restartGame()" class="restart-btn">Начать заново</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
