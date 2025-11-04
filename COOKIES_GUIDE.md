@@ -91,6 +91,8 @@ session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...; user_id=12345; subdomain=amosht
 
 ## Шаг 8: Запустите скрипт
 
+### Вариант А: Header String формат (из инструментов разработчика)
+
 После того как скопировали cookies, запустите:
 
 ```bash
@@ -100,6 +102,20 @@ python amocrm_web_export.py
 Скрипт попросит:
 1. Ввести поддомен: `amoshturm`
 2. Вставить cookies (вставьте скопированную строку)
+
+### Вариант Б: Netscape формат (из расширений браузера)
+
+Если вы экспортировали cookies в формате Netscape:
+
+```bash
+python amocrm_netscape_export.py
+```
+
+Скрипт предложит два варианта:
+1. Загрузить из файла (например, cookies.txt)
+2. Вставить текст из буфера обмена
+
+Затем введите поддомен: `amoshturm`
 
 ---
 

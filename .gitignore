@@ -1,6 +1,7 @@
 # Конфиденциальные данные
 .env
 tokens.json
+cookies.txt
 
 # База данных
 *.db

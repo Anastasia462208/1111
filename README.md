@@ -38,6 +38,8 @@ pip install -r requirements.txt
 
 ## Использование
 
+### Вариант 1: OAuth авторизация (классический метод)
+
 Запустите скрипт:
 ```bash
 python amocrm_chat_export.py
@@ -49,6 +51,47 @@ python amocrm_chat_export.py
 3. Загрузит все разговоры из AmoCRM
 4. Загрузит все сообщения из каждого разговора
 5. Сохранит данные в базу данных
+
+### Вариант 2: Экспорт через cookies (САМЫЙ ПРОСТОЙ)
+
+#### Метод A: Header String формат
+
+```bash
+python amocrm_web_export.py
+```
+
+Скрипт попросит ввести:
+1. Поддомен AmoCRM (например, `amoshturm`)
+2. Cookies из браузера в формате HTTP заголовка
+
+Подробная инструкция: [COOKIES_GUIDE.md](COOKIES_GUIDE.md)
+
+#### Метод B: Netscape формат (из расширений браузера)
+
+```bash
+python amocrm_netscape_export.py
+```
+
+Этот метод поддерживает cookies, экспортированные в формате Netscape из расширений типа:
+- EditThisCookie (Chrome/Edge)
+- Cookie-Editor (Firefox)
+- Cookie Quick Manager (Firefox)
+
+Скрипт предложит:
+1. Загрузить cookies из файла (например, `cookies.txt`)
+2. Вставить cookies из буфера обмена
+
+Затем введите поддомен (например, `amoshturm`)
+
+**Устранение проблем**: См. [NETSCAPE_COOKIES_HOWTO.md](NETSCAPE_COOKIES_HOWTO.md)
+
+### Вариант 3: Автоматический экспорт через логин/пароль
+
+```bash
+python amocrm_auto_export.py
+```
+
+Использует логин и пароль из файла `.env`
 
 ## Структура базы данных
 
