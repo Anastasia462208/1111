@@ -26,6 +26,7 @@ class AmoCRMClient:
         self.auth_code = os.getenv('AMOCRM_AUTH_CODE')
 
         self.base_url = f'https://{self.subdomain}.amocrm.ru'
+        self.api_url = 'https://api-b.amocrm.ru'  # API домен для запросов
         self.tokens_file = 'tokens.json'
         self.db_file = 'amocrm_chats.db'
 
@@ -111,7 +112,7 @@ class AmoCRMClient:
 
     def make_request(self, endpoint, method='GET', params=None, data=None):
         """Выполнить запрос к API AmoCRM"""
-        url = f'{self.base_url}/api/v4/{endpoint}'
+        url = f'{self.api_url}/api/v4/{endpoint}'
         headers = {
             'Authorization': f'Bearer {self.access_token}',
             'Content-Type': 'application/json'
